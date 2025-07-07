@@ -21651,6 +21651,7 @@ components:
           $ref: "#/components/schemas/ServiceTier"
         system_fingerprint:
           type: string
+          nullable: true
           description: >
             This fingerprint represents the backend configuration that the model
             runs with.
@@ -21796,6 +21797,7 @@ components:
           $ref: "#/components/schemas/ServiceTier"
         system_fingerprint:
           type: string
+          nullable: true
           description: >
             This fingerprint represents the backend configuration that the model
             runs with.
@@ -22157,6 +22159,7 @@ components:
           description: The model used for completion.
         system_fingerprint:
           type: string
+          nullable: true
           description: >
             This fingerprint represents the backend configuration that the model
             runs with.
@@ -31034,7 +31037,7 @@ components:
           type: string
           description: The intended purpose of the file. Supported values are
             `assistants`, `assistants_output`, `batch`, `batch_output`,
-            `fine-tune`, `fine-tune-results` and `vision`.
+            `fine-tune`, `fine-tune-results`, `vision` and `user_data`.
           enum:
             - assistants
             - assistants_output
@@ -31043,6 +31046,7 @@ components:
             - fine-tune
             - fine-tune-results
             - vision
+            - user_data
         status:
           type: string
           deprecated: true
@@ -37886,8 +37890,8 @@ components:
         type:
           type: string
           enum:
-            - response.mcp_call.arguments_delta
-          description: The type of the event. Always 'response.mcp_call.arguments_delta'.
+            - response.mcp_call.arguments.delta
+          description: The type of the event. Always 'response.mcp_call.arguments.delta'.
           x-stainless-const: true
         output_index:
           type: integer
@@ -38262,9 +38266,9 @@ components:
         type:
           type: string
           enum:
-            - response.output_text_annotation.added
+            - response.output_text.annotation.added
           description: The type of the event. Always
-            'response.output_text_annotation.added'.
+            'response.output_text.annotation.added'.
           x-stainless-const: true
         item_id:
           type: string
@@ -38295,11 +38299,11 @@ components:
         - annotation
         - sequence_number
       x-oaiMeta:
-        name: response.output_text_annotation.added
+        name: response.output_text.annotation.added
         group: responses
         example: |
           {
-            "type": "response.output_text_annotation.added",
+            "type": "response.output_text.annotation.added",
             "item_id": "item-abc",
             "output_index": 0,
             "content_index": 0,
